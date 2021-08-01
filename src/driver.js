@@ -1,8 +1,8 @@
 'use strict';
 
-const events = require('./events');
+const events = require('../events');
 
-pickup = (payload) => {
+function pickup(payload) {
     console.log(`Driver : picked up ${payload.payload.orderId}`);
     setTimeout(() => {
         events.emit('inTransit', payload);
@@ -10,7 +10,7 @@ pickup = (payload) => {
     }, 1000)
 }
 
-deliverd = (payload) => {
+function deliverd(payload) {
     payload.events = 'inTransit';
     payload.time = new Date().toDateString();
     console.log('event', payload);

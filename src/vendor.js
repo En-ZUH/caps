@@ -14,7 +14,7 @@ let payload = {
     address: fake.address.city(),
 
 };
-newCustomerOrder = () => {
+function newCustomerOrder() {
 
     console.log('new order to deliver');
     events.emit('pickup', {
@@ -23,7 +23,7 @@ newCustomerOrder = () => {
         payload: payload
     })
 }
-gratitude = (payload) => {
+function gratitude(payload) {
     payload.event = 'Delivered';
     payload.time = new Date().toDateString();
     console.log(`Thanks for delivering ${payload.payload.orderId}`);
@@ -32,5 +32,5 @@ gratitude = (payload) => {
 
 module.exports = {
     newCustomerOrder: newCustomerOrder,
-    thanks: thanks
+    gratitude: gratitude
 }
