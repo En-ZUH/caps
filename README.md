@@ -1,9 +1,5 @@
 # Caps
 
-## UML Diagram
-
-## Testing 
-![img](assets/test.PNG)
 
 # CAPS "The Code Academy Parcel Service"
 
@@ -23,3 +19,12 @@ CAPS Phase 1: Begin the build of an application for a company called CAPS - The 
 
 - [] As a developer, To use industry standards for managing the state of each package
 - [] As a developer, To create an event driven system so that I can write code that happens in response to events, in real time
+ 
+
+## Testing 
+![img](assets/test.PNG)
+
+## [Pulls](https://github.com/En-ZUH/caps/pulls)
+
+## UML Diagram
+ 
