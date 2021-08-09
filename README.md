@@ -25,7 +25,7 @@ CAPS Phase 1:
 ## [Actions ](https://github.com/En-ZUH/caps/actions)
 
 ### Testing 
-![img](assets/test.PNG)
+![img](assets/test1.PNG)
 
 
 ### UML Diagram
