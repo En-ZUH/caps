@@ -1,7 +1,7 @@
 'use strict';
 
 require('dotenv').config();
-const events = require('./events');
+const events = require('../events');
 
 const fake = require('faker');
 const storeName = process.env.STORE_NAME || ' ';
