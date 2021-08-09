@@ -1,51 +1,41 @@
 'use strict';
 require('dotenv').config();
 
-const vendor = require('../src/vendor');
-const fake = require('faker');
-const driver = require('../src/driver');
+const events = require('../events');
 
-
-describe('Event Connectivity', () => {
-
-    let order = {
-        storeName: process.env.store || 'delivery store',
-        orderId: fake.datatype.uuid(),
-        customerName: fake.name.findName(),
-        address: `${fake.address.city()},${fake.address.stateAbbr()}`
-    }
-
-
-    let payload = {
-        event: 'pickup',
-        time: new Date().toDateString(),
-        payload: order
-    }
-
-
-
-    jest.useFakeTimers();
+describe('Event Test Working', () => {
     let consoleSpy;
-
-    beforeAll(() => {
+    let data = {
+        storeName: process.env.store,
+        orderId: 'ca900968-0607-4660-94a8-4c0e50c7d5c8',
+        customer: 'JaK',
+        adress: 'Japan',
+    };
+    beforeEach(() => {
         consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-    })
 
+    });
 
-    afterAll(() => {
-        consoleSpy.mokRestore;
-    })
+    afterEach(() => {
+        consoleSpy.mockRestore();
+    });
 
-
-
-    it('new Customer Order', () => {
-        vendor.newCustomerOrder()
+    test('pickUp time after 1 sec', async () => {
+        events.emit('PickUp', data);
+        await consoleSpy();
         expect(consoleSpy).toHaveBeenCalled();
     })
 
-
-    it('pickUp time after 1 sec', () => {
-        driver.pickup(payload);
+    test('inTransit', async () => {
+        events.emit('InTransit', data);
+        await consoleSpy();
         expect(consoleSpy).toHaveBeenCalled();
-    })
-})
+    });
+    test('Delivered', async () => {
+        events.emit('Delivered', data);
+        await consoleSpy();
+        expect(consoleSpy).toHaveBeenCalled();
+    });
+
+
+});
